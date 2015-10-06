@@ -69,7 +69,6 @@ public class UnitController : MonoBehaviour {
     private BaseUnit[] GetUnitsUnderRectangle(Rect selectionRectangle)
     {
         List<BaseUnit> selectedUnits = new List<BaseUnit>();
-
         foreach (BaseUnit unit in _unitsInScene)
         {
 
@@ -80,7 +79,6 @@ public class UnitController : MonoBehaviour {
                 selectedUnits.Add(unit);
             }
         }
-
         return selectedUnits.ToArray();
     }
 
