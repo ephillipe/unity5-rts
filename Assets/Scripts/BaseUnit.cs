@@ -4,7 +4,8 @@ using System.Collections;
 public class BaseUnit : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	internal virtual void Start() { 
+        properties.Initialize();
         UnitController.AddBaseUnitToList(this);
     }
 	
@@ -15,7 +16,7 @@ public class BaseUnit : MonoBehaviour {
 
     public Projector projector;
     private bool _isSelected;
-    //public UnitProperties properties;
+    public UnitProperties properties;
     public int id;
 
     public bool IsSelected
