@@ -25,7 +25,6 @@ public class EntitiesHolder : MonoBehaviour
                 return m;
             }
         }
-
         foreach (StaticEntityProperties s in _staticProps)
         {
             if (s.Id == id)
@@ -33,7 +32,6 @@ public class EntitiesHolder : MonoBehaviour
                 return s;
             }
         }
-
         return null;
     }
 
@@ -48,7 +46,6 @@ public class EntitiesHolder : MonoBehaviour
                 returnList.Add(m);
             }
         }
-
         foreach (StaticEntityProperties s in _staticProps)
         {
             if (s.AvailableOn == id)
@@ -56,7 +53,6 @@ public class EntitiesHolder : MonoBehaviour
                 returnList.Add(s);
             }
         }
-
         return returnList.ToArray();
     }
 }

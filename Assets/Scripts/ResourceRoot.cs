@@ -21,21 +21,23 @@ public class ResourceRoot : MonoBehaviour {
 	}
 
 	public int GatherFromHere (int desiredAmount)
-	{
-		
-		if(desiredAmount <= resourcesLeft)
-		{
-			resourcesLeft -= desiredAmount;
-			return desiredAmount;
-		}
-		else
-		{
-			resourcesLeft = 0;
-			
-			if(OnEmptySource != null)
-				OnEmptySource();
-			
-			return resourcesLeft;
-		}
+	{		
+		//if(desiredAmount <= resourcesLeft)
+		//{
+		//	resourcesLeft -= desiredAmount;
+		//	return desiredAmount;
+		//}
+		//else
+		//{
+		//	resourcesLeft = 0;			
+		//	if(OnEmptySource != null)
+		//		OnEmptySource();			
+		//	return resourcesLeft;
+		//}
+        int amount = Mathf.Min(desiredAmount, resourcesLeft);
+        resourcesLeft -= desiredAmount;
+        if (resourcesLeft <= 0 && OnEmptySource != null)
+            OnEmptySource();
+        return amount;
 	}
 }

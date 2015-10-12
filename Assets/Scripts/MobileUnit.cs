@@ -17,15 +17,15 @@ public class MobileUnit : BaseUnit
     {
         if (IsSelected)
         {
-            EntityProperties[] entitiesAvailableOnThisUnit = EntitiesHolder.LoadEntitiesAvailableOnId(base.id);
-            for (int i = 0; i < entitiesAvailableOnThisUnit.Length; i++)
-            {
-                EntityProperties current = entitiesAvailableOnThisUnit[i];
-                if (GUI.Button(new Rect(0, 40 * i, 400, 40), current.Name + ", " + current.Description))
-                {
-                    BuildingPlacer.Create(current.Id);
-                }
-            }
+            //EntityProperties[] entitiesAvailableOnThisUnit = EntitiesHolder.LoadEntitiesAvailableOnId(base.id);
+            //for (int i = 0; i < entitiesAvailableOnThisUnit.Length; i++)
+            //{
+            //    EntityProperties current = entitiesAvailableOnThisUnit[i];
+            //    if (GUI.Button(new Rect(0, 40 * i, 400, 40), current.Name + ", " + current.Description))
+            //    {
+            //        BuildingPlacer.Create(current.Id);
+            //    }
+            //}
         }
     }
 

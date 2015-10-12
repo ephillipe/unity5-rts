@@ -87,10 +87,12 @@
     <Compile Include="Assets\Scripts\Objects\StaticEntityProperties.cs" />
     <Compile Include="Assets\Scripts\Objects\StaticUnitScriptInfo.cs" />
     <Compile Include="Assets\Scripts\Objects\UnitProperties.cs" />
+    <Compile Include="Assets\Scripts\Objects\VillagerProperties.cs" />
     <Compile Include="Assets\Scripts\ResourceRoot.cs" />
     <Compile Include="Assets\Scripts\StaticUnit.cs" />
     <Compile Include="Assets\Scripts\StorageBuilding.cs" />
     <Compile Include="Assets\Scripts\UnitController.cs" />
+    <Compile Include="Assets\Scripts\Villager.cs" />
     <Compile Include="Assets\Scripts\XMLParser.cs" />
   </ItemGroup>
   <ItemGroup>

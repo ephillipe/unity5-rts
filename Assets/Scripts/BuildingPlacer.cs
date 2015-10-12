@@ -42,6 +42,7 @@ public class BuildingPlacer : MonoBehaviour
 		print (newBuilding);
 		print (properties.scriptInfo);
         newBuilding.AddComponent<StorageBuilding>();
+        //TODO: Corrigir criação de componente
         //Original: newBuilding.AddComponent (properties.scriptInfo.script);
         //API Update: UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent (newBuilding, "Assets/Scripts/BuildingPlacer.cs (44,3)", properties.scriptInfo.script);
         for (int i = 0; i < properties.scriptInfo.arguments.Length; i++) 

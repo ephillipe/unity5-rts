@@ -5,7 +5,6 @@ public class BaseUnit : MonoBehaviour {
 
 	// Use this for initialization
 	internal virtual void Start() { 
-        properties.Initialize();
         UnitController.AddBaseUnitToList(this);
     }
 	
@@ -40,7 +39,7 @@ public class BaseUnit : MonoBehaviour {
 
     public virtual void ActionCallback(Vector3 target) { }
 
-    //public virtual void ActionCallback(ResourceRoot target) { }
+    public virtual void ActionCallback(ResourceRoot target) { }
 
     public virtual void OnCreated(string[] arguments) { }
 }

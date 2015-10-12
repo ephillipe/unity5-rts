@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class UnitController : MonoBehaviour {
+public class UnitController : MonoBehaviour
+{
 
     private Vector2 _initialPosition;
     private Vector2 _finalPosition;
@@ -17,22 +18,36 @@ public class UnitController : MonoBehaviour {
         _selectedUnits = new BaseUnit[0];
     }
 
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    void Update()
+    {
+        if (Input.GetButtonUp("Fire2"))
+        {
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray.origin, ray.direction, out hit))
+            {
+                ResourceRoot source = hit.transform.GetComponent<ResourceRoot>();
+                if (source != null)
+                {
+                    foreach (BaseUnit unit in _selectedUnits)
+                    {
+                        unit.ActionCallback(source);
+                    }
+                    return;
+                }
+                foreach (BaseUnit unit in _selectedUnits)
+                {
+                    unit.ActionCallback(hit.point);
+                }
+            }
+        }
+    }
 
     void OnGUI()
     {
         if (Input.GetButtonDown("Fire1"))
         {
             _initialPosition = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
-            // GUI.Box(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y, 100, 100), "");
         }
 
         if (Input.GetButton("Fire1"))
@@ -69,6 +84,7 @@ public class UnitController : MonoBehaviour {
     private BaseUnit[] GetUnitsUnderRectangle(Rect selectionRectangle)
     {
         List<BaseUnit> selectedUnits = new List<BaseUnit>();
+
         foreach (BaseUnit unit in _unitsInScene)
         {
 
@@ -79,6 +95,7 @@ public class UnitController : MonoBehaviour {
                 selectedUnits.Add(unit);
             }
         }
+
         return selectedUnits.ToArray();
     }
 
@@ -87,24 +104,22 @@ public class UnitController : MonoBehaviour {
         _unitsInScene.Add(unit);
     }
 
-    //public static IResourceReceiver GetClosestResourceReceiver(ResourceType resource, Vector3 relativeTo)
-    //{
-    //    float minDistance = Mathf.Infinity;
-    //    StorageBuilding closest = null;
-
-    //    foreach (BaseUnit unit in _unitsInScene)
-    //    {
-    //        if (unit is IResourceReceiver)
-    //        {
-    //            float currentDistance = Vector3.Distance(unit.transform.position, relativeTo);
-    //            if (currentDistance < minDistance && (unit as IResourceReceiver).AcceptResource(resource))
-    //            {
-    //                minDistance = currentDistance;
-    //                closest = unit as StorageBuilding;
-    //            }
-    //        }
-    //    }
-
-    //    return closest as IResourceReceiver;
-    //}
+    public static IResourceReceiver GetClosestResourceReceiver(ResourceType resource, Vector3 relativeTo)
+    {
+        float minDistance = Mathf.Infinity;
+        StorageBuilding closest = null;
+        foreach (BaseUnit unit in _unitsInScene)
+        {
+            if (unit is IResourceReceiver)
+            {
+                float currentDistance = Vector3.Distance(unit.transform.position, relativeTo);
+                if (currentDistance < minDistance && (unit as IResourceReceiver).AcceptResource(resource))
+                {
+                    minDistance = currentDistance;
+                    closest = unit as StorageBuilding;
+                }
+            }
+        }
+        return closest as IResourceReceiver;
+    }
 }

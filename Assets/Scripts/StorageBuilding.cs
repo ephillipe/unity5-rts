@@ -5,7 +5,6 @@ public class StorageBuilding : StaticUnit, IResourceReceiver
 {
 	[SerializeField]
 	private ResourceType[] _acceptedResources;
-
 	public ResourceType[] AcceptedResources
 	{
 		get { return _acceptedResources; }
@@ -25,7 +24,6 @@ public class StorageBuilding : StaticUnit, IResourceReceiver
 				return true;
 			}
 		}
-
 		return false;
 	}
 

@@ -23,31 +23,31 @@ public class CameraControl : MonoBehaviour {
 
         Vector3 movement = Vector3.zero;
 
-        if (yBorder < minDistanceToBorder)
-        {
+        //if (yBorder < minDistanceToBorder)
+        //{
 
-            movement = new Vector3(movement.x, movement.y, minDistanceToBorder - yBorder);
+        //    movement = new Vector3(movement.x, movement.y, minDistanceToBorder - yBorder);
 
-        }
-        else if (mouse.y < minDistanceToBorder)
-        {
+        //}
+        //else if (mouse.y < minDistanceToBorder)
+        //{
 
-            movement = new Vector3(movement.x, movement.y, -(minDistanceToBorder - mouse.y));
+        //    movement = new Vector3(movement.x, movement.y, -(minDistanceToBorder - mouse.y));
 
-        }
+        //}
 
-        if (xBorder < minDistanceToBorder)
-        {
+        //if (xBorder < minDistanceToBorder)
+        //{
 
-            movement = new Vector3(minDistanceToBorder - xBorder, movement.y, movement.z);
+        //    movement = new Vector3(minDistanceToBorder - xBorder, movement.y, movement.z);
 
-        }
-        else if (mouse.x < minDistanceToBorder)
-        {
+        //}
+        //else if (mouse.x < minDistanceToBorder)
+        //{
 
-            movement = new Vector3(-(minDistanceToBorder - mouse.x), movement.y, movement.z);
+        //    movement = new Vector3(-(minDistanceToBorder - mouse.x), movement.y, movement.z);
 
-        }
+        //}
 
         float forward = Input.GetAxis("Forward") * minDistanceToBorder * movementVelocity;
         float right = Input.GetAxis("Right") * minDistanceToBorder * movementVelocity;
