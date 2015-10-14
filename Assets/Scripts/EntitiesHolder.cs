@@ -38,7 +38,6 @@ public class EntitiesHolder : MonoBehaviour
     public static EntityProperties[] LoadEntitiesAvailableOnId(int id)
     {
         List<EntityProperties> returnList = new List<EntityProperties>();
-
         foreach (MobileEntityProperties m in _mobileProps)
         {
             if (m.AvailableOn == id)
