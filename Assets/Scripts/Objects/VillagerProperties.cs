@@ -7,6 +7,7 @@ public class VillagerProperties : MobileUnitProperties
     public int currentResourceAmount;
     public int resourceCapacity;
     public int unitsGatheredPerSecond;
+    public int unitsBuildedPerSecond;
 
     public bool IsFull
     {

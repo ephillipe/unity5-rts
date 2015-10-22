@@ -7,6 +7,7 @@
 		<description>Used as a center to drop wood in.</description>
 		<availableOn>1</availableOn>
 		<level>1</level>
+    <hp>150</hp>
 		<script arg0="Wood">StorageBuilding</script>
 	</building>
 	
@@ -17,6 +18,7 @@
 		<description>Used as a center to drop gold in.</description>
 		<availableOn>1</availableOn>
 		<level>2</level>
+    <hp>200</hp>
 		<script arg0="Gold">StorageBuilding</script>
 	</building>
 </buildings>

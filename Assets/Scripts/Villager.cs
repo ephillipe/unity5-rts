@@ -11,6 +11,7 @@ public class Villager : MobileUnit
         properties = new VillagerProperties();
         properties.resourceCapacity = 15;
         properties.unitsGatheredPerSecond = 2;
+        properties.unitsBuildedPerSecond = 2;
         properties.movementSpeed = 2;
     }
 
@@ -42,9 +43,25 @@ public class Villager : MobileUnit
         }
     }
 
+    private IEnumerator Build(Construction construction)
+    {
+        yield return StartCoroutine(MoveTo(new Vector3[1] { construction.transform.position }));
+        while (!construction.IsDone)
+        {
+            construction.Build(properties.unitsBuildedPerSecond);
+            yield return new WaitForSeconds(1);
+        }
+    }
+
     public override void ActionCallback(ResourceRoot target)
     {
         StopAllCoroutines();
         StartCoroutine(Gather(target));
+    }
+
+    public override void ActionCallback(Construction target)
+    {
+        StopAllCoroutines();
+        StartCoroutine(Build(target));
     }
 }

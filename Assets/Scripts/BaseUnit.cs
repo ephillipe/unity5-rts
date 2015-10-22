@@ -41,5 +41,7 @@ public class BaseUnit : MonoBehaviour {
 
     public virtual void ActionCallback(ResourceRoot target) { }
 
+    public virtual void ActionCallback(Construction target) { }
+
     public virtual void OnCreated(string[] arguments) { }
 }

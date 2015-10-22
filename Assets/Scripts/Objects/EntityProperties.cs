@@ -9,4 +9,5 @@ public class EntityProperties
     public string Description;
     public int AvailableOn;
     public int Level;
+    public int Hp;
 }

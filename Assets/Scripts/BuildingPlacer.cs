@@ -5,15 +5,17 @@ public class BuildingPlacer : MonoBehaviour
 {
 	private static GameObject _building = null;
 	private static int _buildingId;
+    private static Villager _villager;
 
-	public static bool IsPlacing 
+    public static bool IsPlacing 
 	{
 		get { return _building != null; }
 	}
 
-	public static void Create (int id)
+	public static void Create (int id, Villager villager)
 	{
 		_buildingId = id;
+        _villager = villager;
 		DestroyCurrent ();
 		InstantiateNewBuilding (string.Empty); // incompleto
 	}
@@ -41,15 +43,9 @@ public class BuildingPlacer : MonoBehaviour
 		StaticEntityProperties properties = EntitiesHolder.LoadEntityById (_buildingId) as StaticEntityProperties;
 		print (newBuilding);
 		print (properties.scriptInfo);
-        newBuilding.AddComponent<StorageBuilding>();
-        //TODO: Corrigir criação de componente
-        //Original: newBuilding.AddComponent (properties.scriptInfo.script);
-        //API Update: UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent (newBuilding, "Assets/Scripts/BuildingPlacer.cs (44,3)", properties.scriptInfo.script);
-        for (int i = 0; i < properties.scriptInfo.arguments.Length; i++) 
-		{
-			print  (properties.scriptInfo.arguments[i]);
-		}
-		(newBuilding.GetComponent (properties.scriptInfo.script) as BaseUnit).OnCreated (properties.scriptInfo.arguments);
+        Construction c = newBuilding.AddComponent<Construction>();
+        c.OnCreated(new string[1] { properties.Id.ToString() });
+        _villager.ActionCallback(c);
 		DestroyCurrent ();
 	}
 

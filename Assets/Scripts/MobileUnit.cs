@@ -23,7 +23,7 @@ public class MobileUnit : BaseUnit
                 EntityProperties current = entitiesAvailableOnThisUnit[i];
                 if (GUI.Button(new Rect(0, 40 * i, 400, 40), current.Name + ", " + current.Description))
                 {
-                    BuildingPlacer.Create(current.Id);
+                    BuildingPlacer.Create(current.Id, (this as Villager));
                 }
             }
         }
@@ -41,7 +41,7 @@ public class MobileUnit : BaseUnit
                 yield return null;
             } while (direction.sqrMagnitude > 0.1f);
         }
-    }
+    }    
 
     public void MovementCallback(Vector3 direction)
     {

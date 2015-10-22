@@ -50,7 +50,11 @@ public class XMLParser
 				{
 					current.Level = reader.ReadElementContentAsInt();
 				}
-				if(reader.IsStartElement("script"))
+                if (reader.IsStartElement("hp"))
+                {
+                    current.Hp = reader.ReadElementContentAsInt();
+                }
+                if (reader.IsStartElement("script"))
 				{
 					Debug.Log (reader.AttributeCount);
 					current.scriptInfo = new StaticUnitScriptInfo (string.Empty, new string [reader.AttributeCount]);

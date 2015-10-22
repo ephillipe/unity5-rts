@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\BaseUnit.cs" />
     <Compile Include="Assets\Scripts\BuildingPlacer.cs" />
     <Compile Include="Assets\Scripts\CameraControl.cs" />
+    <Compile Include="Assets\Scripts\Construction.cs" />
     <Compile Include="Assets\Scripts\EntitiesHolder.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IResourceReceiver.cs" />
     <Compile Include="Assets\Scripts\MobileUnit.cs" />
